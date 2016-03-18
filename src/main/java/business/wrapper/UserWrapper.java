@@ -57,7 +57,7 @@ public class UserWrapper {
 
     @Override
     public String toString() {
-        String time = new SimpleDateFormat("dd-MMM-yyyy ").format(birthDate.getTime());
+        String time = new SimpleDateFormat("dd-MM-yyyy ").format(birthDate.getTime());
         return "UserWrapper [username=" + username + ", email=" + email + ", password=" + password + ", birthDate=" + time + "]";
     }
 
