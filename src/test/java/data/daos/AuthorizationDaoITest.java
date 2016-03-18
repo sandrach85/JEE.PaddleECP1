@@ -27,7 +27,7 @@ public class AuthorizationDaoITest {
 
     @Test
     public void testFindRoleByUser() {
-        List<Role> roles = authorizationDao.findRoleByUser((User) daosService.getMap().get("u4"));
+        List<Role> roles = authorizationDao.findRoleByUser((User) daosService.getMap().get("u2"));
         assertEquals(1, roles.size());
         assertEquals(Role.PLAYER, roles.get(0));
     }
