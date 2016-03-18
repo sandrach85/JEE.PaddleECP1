@@ -14,7 +14,7 @@ public class TokenResourceFunctionalTesting {
         assertTrue(token.length() > 20);
         LogManager.getLogger(this.getClass()).info("testLoginPlayer (token:" + token + ")");
     }
-    
+
     @After
     public void deleteAll() {
         new RestService().deleteAll();

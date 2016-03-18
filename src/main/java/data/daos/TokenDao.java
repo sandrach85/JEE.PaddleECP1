@@ -11,9 +11,9 @@ import data.entities.User;
 public interface TokenDao extends JpaRepository<Token, Integer>, TokenExtended {
 
     Token findByUser(User user);
-    
-    @Query(value="select * from Token", nativeQuery=true)
+
+    @Query(value = "select * from Token", nativeQuery = true)
     List<Token> findAllToken();
-    
+
     Token findByValue(String value);
 }

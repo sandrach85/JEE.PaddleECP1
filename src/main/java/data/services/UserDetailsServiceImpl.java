@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(final String usernameOrEmailOrTokenValue) throws UsernameNotFoundException {
         User user = userDao.findByTokenValue(usernameOrEmailOrTokenValue);
-        //User user = userDao.findByTokenValueNoExpired(usernameOrEmailOrTokenValue);
+        // User user = userDao.findByTokenValueNoExpired(usernameOrEmailOrTokenValue);
         if (user == null) {
             user = userDao.findByUsernameOrEmail(usernameOrEmailOrTokenValue);
             if (user == null) {
@@ -56,7 +56,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.roleName()));
         }
-        return new org.springframework.security.core.userdetails.User(username, password, enabled, accountNonExpired,
-                credentialsNonExpired, accountNonLocked, authorities);
+        return new org.springframework.security.core.userdetails.User(username, password, enabled, accountNonExpired, credentialsNonExpired,
+                accountNonLocked, authorities);
     }
 }

@@ -37,9 +37,9 @@ public class ReserveResourceFunctionalTesting {
         String token = restService.registerAndLoginPlayer();
         Calendar day = Calendar.getInstance();
         day.add(Calendar.DAY_OF_YEAR, 1);
-        day.set(Calendar.HOUR_OF_DAY,12);
+        day.set(Calendar.HOUR_OF_DAY, 12);
         new RestBuilder<String>(RestService.URL).path(Uris.RESERVES).basicAuth(token, "").body(new AvailableTime(1, day)).post().build();
-        day.set(Calendar.HOUR_OF_DAY,14);
+        day.set(Calendar.HOUR_OF_DAY, 14);
         new RestBuilder<String>(RestService.URL).path(Uris.RESERVES).basicAuth(token, "").body(new AvailableTime(2, day)).post().build();
     }
 

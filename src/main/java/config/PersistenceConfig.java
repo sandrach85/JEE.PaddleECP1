@@ -19,7 +19,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration 
+@Configuration
 @PropertySource(ResourceNames.PROPERTIES)
 @EnableJpaRepositories(basePackages = ResourceNames.DAOS, repositoryImplementationPostfix = "Impl")
 @EnableTransactionManagement
@@ -47,7 +47,6 @@ public class PersistenceConfig {
         properties.put("hibernate.connection.charSet", "UTF-8");
         properties.put("hibernate.show_sql", "false");
         properties.put("hibernate.format_sql", "true");
-        // create-drop, create, update, validate
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         entityManagerFactoryBean.setJpaProperties(properties);

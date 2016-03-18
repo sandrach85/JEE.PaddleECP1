@@ -8,15 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import data.entities.Training;
 import data.entities.User;
 
-public interface TrainingDao  extends JpaRepository<Training, Integer>, TrainingExtended {
+public interface TrainingDao extends JpaRepository<Training, Integer>, TrainingExtended {
 
-	@Query("select t.users from Training t where t.id= ?1")
-	List<User> findUsersTraining(int id);
-	
-	Training findById(int id);
-	
-	@Query("select t.trainer from Training t where t.id= ?1")
-	User findIdTrainer(int id);
-	
-	
+    @Query("select t.users from Training t where t.id= ?1")
+    List<User> findUsersTraining(int id);
+
+    Training findById(int id);
+
+    @Query("select t.trainer from Training t where t.id= ?1")
+    User findIdTrainer(int id);
+
 }

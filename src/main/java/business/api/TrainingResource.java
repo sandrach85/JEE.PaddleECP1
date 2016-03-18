@@ -41,7 +41,8 @@ public class TrainingResource {
     }
 
     @RequestMapping(value = Uris.DELETE_TRAINING, method = RequestMethod.DELETE)
-    public void deleteTraining(@AuthenticationPrincipal User trainer, @RequestParam(required = true) int id) throws NotFoundTrainingIdException {
+    public void deleteTraining(@AuthenticationPrincipal User trainer, @RequestParam(required = true) int id)
+            throws NotFoundTrainingIdException {
         this.validateFieldTraininIdExist(id);
         this.trainingController.deleteTraining(id);
     }
@@ -69,8 +70,7 @@ public class TrainingResource {
 
     }
 
-    private void validateFieldDate(Calendar time1, Calendar time2) 
-            throws InvalidDateException, InvalidIntervalTrainingDateFieldException {
+    private void validateFieldDate(Calendar time1, Calendar time2) throws InvalidDateException, InvalidIntervalTrainingDateFieldException {
         if (!trainingController.validateTrainingDate(time1)) {
             throw new InvalidDateException("La fecha no puede ser un día pasado");
         }
@@ -99,9 +99,9 @@ public class TrainingResource {
             throw new NotFoundUserIdException("Id de Jugador no encontrado");
         }
     }
-    
+
     private void validateFieldQuotaAvailableTraining(int id) throws InvalidTrainingQuotaFull {
-        if (!trainingController.validateFieldQuotaAvailable(id)){
+        if (!trainingController.validateFieldQuotaAvailable(id)) {
             throw new InvalidTrainingQuotaFull("Grupo completo de alumnos");
         }
     }

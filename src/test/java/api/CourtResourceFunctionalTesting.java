@@ -31,8 +31,8 @@ public class CourtResourceFunctionalTesting {
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.UNAUTHORIZED, httpError.getStatusCode());
-            LogManager.getLogger(this.getClass()).info(
-                    "testCreateCourt (" + httpError.getMessage() + "):\n    " + httpError.getResponseBodyAsString());
+            LogManager.getLogger(this.getClass())
+                    .info("testCreateCourt (" + httpError.getMessage() + "):\n    " + httpError.getResponseBodyAsString());
         }
     }
 
@@ -57,9 +57,8 @@ public class CourtResourceFunctionalTesting {
         try {
             new RestBuilder<Object>(RestService.URL).path(Uris.COURTS).pathId(1).path(Uris.ACTIVE).basicAuth(token, "").post().build();
         } catch (HttpClientErrorException httpError) {
-            LogManager.getLogger(this.getClass()).info(
-                    "testChangeCourtActivationTrueUnauthorization (" + httpError.getMessage() + "):\n    "
-                            + httpError.getResponseBodyAsString());
+            LogManager.getLogger(this.getClass()).info("testChangeCourtActivationTrueUnauthorization (" + httpError.getMessage()
+                    + "):\n    " + httpError.getResponseBodyAsString());
         }
     }
 

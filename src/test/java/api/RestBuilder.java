@@ -48,7 +48,7 @@ public class RestBuilder<T> {
         this.uri = this.uri + "/" + path;
         return this;
     }
-    
+
     public RestBuilder<T> pathId(String path) {
         this.uri = this.uri + "/" + path;
         return this;

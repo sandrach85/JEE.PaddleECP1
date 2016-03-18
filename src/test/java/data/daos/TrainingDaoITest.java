@@ -36,15 +36,15 @@ public class TrainingDaoITest {
         Training training = (Training) daosService.getMap().get("u41");
         assertTrue(training.getTrainer().getId() == 6);
     }
-    
+
     @Test
-    public void testFindUserInTraining(){
+    public void testFindUserInTraining() {
         Training training = (Training) daosService.getMap().get("u62");
-        assertTrue(trainingDao.findUserInTraining(training.getId(), 12)==null);
+        assertTrue(trainingDao.findUserInTraining(training.getId(), 12) == null);
         User user = (User) daosService.getMap().get("u10");
         training.addUserInTraining(user);
         trainingDao.save(training);
-        assertTrue(trainingDao.findUserInTraining(training.getId(), 12)!=null);
+        assertTrue(trainingDao.findUserInTraining(training.getId(), 12) != null);
     }
 
     @Test

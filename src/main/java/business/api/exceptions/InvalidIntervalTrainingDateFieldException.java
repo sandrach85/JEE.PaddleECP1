@@ -1,7 +1,6 @@
 package business.api.exceptions;
 
 public class InvalidIntervalTrainingDateFieldException extends ApiException {
-    
 
     private static final long serialVersionUID = -1344640670884805385L;
 

@@ -23,7 +23,7 @@ Para este apartado se ha creado una query que devuelva sólo usuarios que tengan
 
 ###B (+5) Ampliar la capa de negocio para poder ofrecer un servicio de clases de padel, incluyendo la seguridad. El diseño es abierto
 
-Se ha creado un controlador de entrenamientos, TrainingController, un envolvente, TrainingWrapper, y un recurso especifico de los entrenamientos, TrainingResource. Además se han añadido las Uris correspondientes en el fichero de Uris y la seguridad en el fichero de SecurityConfig.
+Se ha creado un controlador de entrenamientos, TrainingController, un envolvente, TrainingWrapper, y un recurso especifico de los entrenamientos, TrainingResource. Además se han añadido las Uris correspondientes en el fichero de Uris y la seguridad en el fichero de SecurityConfig. También se han añadido alguna excepciones más.
 
 ###C (+3) Modificar o realizar los test de las mejorar anteriores
 

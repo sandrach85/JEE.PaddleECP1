@@ -66,8 +66,8 @@
 							o realiza el alquiler con nosotros. También tenemos ofertas
 							especiales para grupos y despedidas de soltero!</p>
 						<p>
-							<a class="btn btn-lg btn-primary"
-								href="<c:url value="/home"/>" role="button">Probar</a>
+							<a class="btn btn-lg btn-primary" href="<c:url value="/home"/>"
+								role="button">Probar</a>
 						</p>
 					</div>
 				</div>
@@ -94,7 +94,8 @@
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Mostrar Pistas</h1>
-						<p>Muestra una tabla con el listado de pistas y su disponibilidad</p>
+						<p>Muestra una tabla con el listado de pistas y su
+							disponibilidad</p>
 						<p>
 							<a class="btn btn-lg btn-primary"
 								href="<c:url value="/list-courts"/>" role="button">probar</a>

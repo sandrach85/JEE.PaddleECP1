@@ -30,8 +30,8 @@ public class UserResourceFunctionalTesting {
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.BAD_REQUEST, httpError.getStatusCode());
-            LogManager.getLogger(this.getClass()).info(
-                    "testBadRequestCreate (" + httpError.getMessage() + "):\n    " + httpError.getResponseBodyAsString());
+            LogManager.getLogger(this.getClass())
+                    .info("testBadRequestCreate (" + httpError.getMessage() + "):\n    " + httpError.getResponseBodyAsString());
         }
     }
 
@@ -44,8 +44,8 @@ public class UserResourceFunctionalTesting {
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.CONFLICT, httpError.getStatusCode());
-            LogManager.getLogger(this.getClass()).info(
-                    "testRepeatingFieldCreate (" + httpError.getMessage() + "):\n    " + httpError.getResponseBodyAsString());
+            LogManager.getLogger(this.getClass())
+                    .info("testRepeatingFieldCreate (" + httpError.getMessage() + "):\n    " + httpError.getResponseBodyAsString());
         }
     }
 

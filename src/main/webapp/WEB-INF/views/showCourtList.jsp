@@ -45,7 +45,9 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-8">
-								<div class="page-header"><h2>Listado de Pistas</h2></div>
+								<div class="page-header">
+									<h2>Listado de Pistas</h2>
+								</div>
 								<div class="table-responsive">
 									<table class="table table-hover table-condensed">
 										<thead>
