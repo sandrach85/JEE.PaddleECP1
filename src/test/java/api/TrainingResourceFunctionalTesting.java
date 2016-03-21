@@ -123,14 +123,14 @@ public class TrainingResourceFunctionalTesting {
     }
 
     @Test
-    public void testErrorUnauthorizedRegisterTraining() {
+    public void testErrorForbiddenRegisterTraining() {
         try {
             String token = restService.loginTrainer();
             new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.REGISTER_TRAINING).basicAuth(token, "").param("idT", "1")
                     .param("idU", "3").get().build();
             fail();
         } catch (HttpClientErrorException httpError) {
-            assertEquals(HttpStatus.UNAUTHORIZED, httpError.getStatusCode());
+            assertEquals(HttpStatus.FORBIDDEN, httpError.getStatusCode());
             System.out.println("ERROR>>>>> " + httpError.getMessage());
         }
     }

@@ -52,7 +52,7 @@ public class TrainingControllerTest {
 
     @Test
     public void testDeleteTraining() {
-        Training training = (Training) daosService.getMap().get("u62");
+        Training training = (Training) daosService.getMap().get("u31");
         assertTrue(trainingDao.findById(training.getId()) != null);
         trainingController.deleteTraining(training.getId());
         assertNull(trainingDao.findById(training.getId()));
