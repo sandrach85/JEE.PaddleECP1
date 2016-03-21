@@ -4,8 +4,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,7 +31,7 @@ public class TrainingResource {
     }
 
     @RequestMapping(value = Uris.CREATE_TRAINING, method = RequestMethod.POST)
-    public void createTraining(@AuthenticationPrincipal User trainer, @RequestBody TrainingWrapper trainingWrapper)
+    public void createTraining(@RequestBody TrainingWrapper trainingWrapper)
             throws InvalidDateException, InvalidIntervalTrainingDateFieldException, NotFoundCourtIdException {
         this.validateFieldDate(trainingWrapper.getDateIni(), trainingWrapper.getDateEnd());
         this.validateFieldCourtExist(trainingWrapper.getCourt().getCourtId());
@@ -41,14 +39,14 @@ public class TrainingResource {
     }
 
     @RequestMapping(value = Uris.DELETE_TRAINING, method = RequestMethod.DELETE)
-    public void deleteTraining(@AuthenticationPrincipal User trainer, @RequestParam(required = true) int id)
+    public void deleteTraining(@RequestParam(required = true) int id)
             throws NotFoundTrainingIdException {
         this.validateFieldTraininIdExist(id);
         this.trainingController.deleteTraining(id);
     }
 
     @RequestMapping(value = Uris.DELETE_TRAINING_PLAYER, method = RequestMethod.DELETE)
-    public void deleteTrainingPlayer(@AuthenticationPrincipal User trainer, @RequestParam(required = true) int idT, int idP)
+    public void deleteTrainingPlayer(@RequestParam(required = true) int idT, int idP)
             throws NotFoundTrainingIdException, NotFoundUserIdException {
         this.validateFieldTraininIdExist(idT);
         this.validateFieldTrainingPlayerIdExist(idP);
@@ -61,7 +59,7 @@ public class TrainingResource {
     }
 
     @RequestMapping(value = Uris.REGISTER_TRAINING, method = RequestMethod.PUT)
-    public void registerTraining(@AuthenticationPrincipal User player, @RequestParam(required = true) int idT, int idP)
+    public void registerTraining(@RequestParam(required = true) int idT, int idP)
             throws NotFoundTrainingIdException, NotFoundUserIdException, InvalidTrainingQuotaFull {
         this.validateFieldTraininIdExist(idT);
         this.validateFieldTrainingPlayerIdExist(idP);
