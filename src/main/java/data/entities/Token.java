@@ -24,9 +24,14 @@ public class Token {
     @Column(nullable = false)
     private Calendar createdDate;
 
+    @Column(nullable = false)
+    private long expiredDate;
+
     @ManyToOne
     @JoinColumn
     private User user;
+    
+    public static final int ESPIRED_TIME = 3600000;
 
     public Token() {
     }
@@ -37,6 +42,7 @@ public class Token {
         this.value = new Encrypt()
                 .encryptInBase64UrlSafe("" + user.getId() + user.getUsername() + Long.toString(new Date().getTime()) + user.getPassword());
         this.createdDate = Calendar.getInstance();
+        this.expiredDate = System.currentTimeMillis() + Token.ESPIRED_TIME;
     }
 
     public int getId() {
@@ -57,6 +63,14 @@ public class Token {
 
     public void setCreatedDate(Calendar date) {
         this.createdDate = date;
+    }
+
+    public long getExpiredDate() {
+        return expiredDate;
+    }
+
+    public void setExpiredDate(long expiredDate) {
+        this.expiredDate = expiredDate;
     }
 
     @Override
@@ -85,7 +99,7 @@ public class Token {
     }
 
     public boolean isValid() {
-        if ((Calendar.getInstance().getTimeInMillis() - createdDate.getTimeInMillis()) < 3600000)
+        if ((Calendar.getInstance().getTimeInMillis() - createdDate.getTimeInMillis()) < Token.ESPIRED_TIME)
             return true;
         else
             return false;
