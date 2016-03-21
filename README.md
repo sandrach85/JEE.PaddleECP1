@@ -4,7 +4,7 @@
 
 ###A (+2) Modificar la capa de persistencia para que los tokens caduquen en 1 hora. Se deberá ofrecer una funcionalidad de eliminación de tokens caducados
 
-En éste apartado se ha añadido un atributo más a la entidad de Token en el que se guarda la fecha de creación del mismo. También se ha añadido un método que comprueba si el token no ha expirado. Se ha añadido la funcionalidad para eliminar tokens caducados.
+En éste apartado se ha añadido un atributo más a la entidad de Token en el que se guarda la fecha de creación del mismo y otro para la fecha de expiración. También se ha añadido un método que comprueba si el token no ha expirado. Se ha añadido la funcionalidad para eliminar tokens caducados.
 
 ###B (+5) Ampliar la capa de persistencia para poder ofrecer un servicio de clases de padel. El diseño es abierto
 
@@ -18,8 +18,7 @@ Se han realizado los test tanto de las entidades como de los daos. He ampliado e
 ##ECP1. Api (50%)
 ###A (+2) Modificar la capa de negocio para que la validación de tokens incluya la mejora de caducidad
 
-Para este apartado se ha creado una query que devuelva sólo usuarios que tengan el token en vigor. Al ponerla en UserDetailsServiceImpl no dejan de pasar los test, a pesar de que la query creo que es correcta, por este motivo he dejado la consulta comentada en ese punto, para que la pueda ver pero no cause conflictos con el resto. No encuentro el fallo.
-
+Para este apartado se ha creado una query que devuelva sólo usuarios que tengan el token en vigor.
 
 ###B (+5) Ampliar la capa de negocio para poder ofrecer un servicio de clases de padel, incluyendo la seguridad. El diseño es abierto
 
@@ -27,7 +26,7 @@ Se ha creado un controlador de entrenamientos, TrainingController, un envolvente
 
 ###C (+3) Modificar o realizar los test de las mejorar anteriores
 
-He realizado los test del TrainingController y los de TrainingResource. He añadido en el fichero de populate un creador de entrenadores por defecto, que al lanzarlo da error por no crear una contraseña y no poder codificarla. Dejo esto también comentado. No encuentro el fallo.
+He realizado los test del TrainingController y los de TrainingResource. He añadido en el fichero de populate un creador de entrenadores por defecto.
 
 ##ECP1. Web (20%)
 ###Se puede realizar con JSP + JSTL o Thymeleaf
