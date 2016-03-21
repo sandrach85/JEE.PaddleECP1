@@ -42,7 +42,7 @@ public class DataService {
         courtDao.deleteAll();
         userDao.deleteAll();
         populate.createDefaultAdmin();
-        // populate.createDefaultTrainer();
+        populate.createDefaultTrainer();
     }
 
 }
