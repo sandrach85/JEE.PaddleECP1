@@ -32,8 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(final String usernameOrEmailOrTokenValue) throws UsernameNotFoundException {
-        User user = userDao.findByTokenValue(usernameOrEmailOrTokenValue);
-        // User user = userDao.findByTokenValueNoExpired(usernameOrEmailOrTokenValue);
+        User user = userDao.findByTokenValueNoExpired(usernameOrEmailOrTokenValue, System.currentTimeMillis());
         if (user == null) {
             user = userDao.findByUsernameOrEmail(usernameOrEmailOrTokenValue);
             if (user == null) {
