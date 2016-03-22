@@ -50,8 +50,10 @@ public class TrainingResourceFunctionalTesting {
     @Before
     public void before() {
         date1 = Calendar.getInstance();
+        date1.set(date1.get(Calendar.YEAR), date1.get(Calendar.MONTH), (date1.get(Calendar.DATE) + 1), date1.get(Calendar.HOUR_OF_DAY),
+                date1.get(Calendar.MINUTE));
         date2 = Calendar.getInstance();
-        date2.set(date1.get(Calendar.YEAR), date1.get(Calendar.MONTH), date1.get(Calendar.DATE), date1.get(Calendar.HOUR_OF_DAY),
+        date2.set(date1.get(Calendar.YEAR), (date1.get(Calendar.MONTH) + 1), date1.get(Calendar.DATE), date1.get(Calendar.HOUR_OF_DAY),
                 date1.get(Calendar.MINUTE));
         court = new CourtState(courtDao.findOne(1));
         u1 = (User) daosService.getMap().get("u6");
@@ -64,7 +66,7 @@ public class TrainingResourceFunctionalTesting {
         try {
             String token = restService.loginAdmin();
             new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.CREATE_TRAINING).basicAuth(token, "")
-                    .body(trainingWrapper).get().build();
+                    .body(trainingWrapper).post().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.FORBIDDEN, httpError.getStatusCode());
@@ -73,11 +75,18 @@ public class TrainingResourceFunctionalTesting {
     }
 
     @Test
+    public void testCreateTrainingOK() {
+        String token = restService.loginTrainer();
+        new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.CREATE_TRAINING).basicAuth(token, "").body(trainingWrapper)
+                .post().build();
+    }
+
+    @Test
     public void testErrorConflicCreateTraining() {
         try {
             String token = restService.registerAndLoginPlayer();
             new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.CREATE_TRAINING).basicAuth(token, "")
-                    .body(trainingWrapper).get().build();
+                    .body(trainingWrapper).post().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.CONFLICT, httpError.getStatusCode());
@@ -90,7 +99,7 @@ public class TrainingResourceFunctionalTesting {
         try {
             String token = restService.loginAdmin();
             new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.DELETE_TRAINING).basicAuth(token, "").param("idT", "1")
-                    .get().build();
+                    .delete().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.FORBIDDEN, httpError.getStatusCode());
@@ -103,7 +112,7 @@ public class TrainingResourceFunctionalTesting {
         try {
             String token = restService.loginAdmin();
             new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.DELETE_TRAINING_PLAYER).basicAuth(token, "")
-                    .param("idT", "1").param("idU", "1").get().build();
+                    .param("idT", "1").param("idU", "1").delete().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.FORBIDDEN, httpError.getStatusCode());
@@ -127,11 +136,12 @@ public class TrainingResourceFunctionalTesting {
         try {
             String token = restService.loginTrainer();
             new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.REGISTER_TRAINING).basicAuth(token, "").param("idT", "1")
-                    .param("idU", "3").get().build();
+                    .param("idU", "3").post().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.FORBIDDEN, httpError.getStatusCode());
             System.out.println("ERROR>>>>> " + httpError.getMessage());
         }
     }
+
 }
