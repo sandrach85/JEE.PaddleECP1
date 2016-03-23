@@ -60,16 +60,16 @@ public class TrainingControllerTest {
 
     @Test
     public void testDeleteTrainingPlayer() {
-        assertTrue(trainingDao.findUserInTraining(1, 2) != null);
-        trainingController.deleteTrainingPlayer(1, 2);
-        assertTrue(trainingDao.findUserInTraining(1, 2) == null);
+        assertTrue(trainingDao.findUserInTraining(2, 3) != null);
+        trainingController.deleteTrainingPlayer(2, 3);
+        assertTrue(trainingDao.findUserInTraining(2, 3) == null);
     }
 
     @Test
     public void testRegisterTraining() {
-        assertTrue(trainingDao.findUserInTraining(1, 5) == null);
-        trainingController.registerTraining(1, 5);
-        assertTrue(trainingDao.findUserInTraining(1, 5) != null);
+        assertTrue(trainingDao.findUserInTraining(3, 11) == null);
+        trainingController.registerTraining(3, 11);
+        assertTrue(trainingDao.findUserInTraining(3, 11) != null);
     }
 
 }
