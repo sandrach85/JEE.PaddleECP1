@@ -98,13 +98,20 @@ public class TrainingResourceFunctionalTesting {
     public void testErrorForbiddenDeleteTraining() {
         try {
             String token = restService.loginAdmin();
-            new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.DELETE_TRAINING).basicAuth(token, "").param("idT", "1")
+            new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.DELETE_TRAINING).basicAuth(token, "").param("id", "1")
                     .delete().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.FORBIDDEN, httpError.getStatusCode());
             System.out.println("ERROR>>>>> " + httpError.getMessage());
         }
+    }
+
+    @Test
+    public void testDeleteTrainingOK() {
+        String token = restService.loginTrainer();
+        new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.DELETE_TRAINING).basicAuth(token, "").param("id", "1")
+                .delete().build();
     }
 
     @Test
@@ -135,8 +142,8 @@ public class TrainingResourceFunctionalTesting {
     public void testErrorForbiddenRegisterTraining() {
         try {
             String token = restService.loginTrainer();
-            new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.REGISTER_TRAINING).basicAuth(token, "").param("idT", "1")
-                    .param("idU", "3").post().build();
+            new RestBuilder<Object>(RestService.URL).path(Uris.TRAINING).path(Uris.REGISTER_TRAINING).basicAuth(token, "").param("idT", "2")
+                    .param("idP", "6").put().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.FORBIDDEN, httpError.getStatusCode());
