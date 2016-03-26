@@ -54,7 +54,7 @@
 													<strong>Creación de pista correcta</strong>
 												</div>
 												<div class="panel-body">
-													<h3>La pista (${court.courtId-1}) ha sido creada
+													<h3>La pista ${court.courtId-1} ha sido creada
 														satisfactoriamente</h3>
 												</div>
 												<div class="panel-footer">

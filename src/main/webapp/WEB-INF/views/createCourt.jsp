@@ -49,10 +49,26 @@
 									<h2>Crear Pista</h2>
 								</div>
 								<div class="table-responsive">
-									<form:form action="create-court" modelAttribute="court">
-										<form:hidden path="courtId" />
-										<input type="submit" value="Crear">
-									</form:form>
+									<table class="table table-hover table-condensed">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th>Disponibilidad</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>${court.courtId}</th>
+												<th>Activa</th>
+												<th><form:form action="create-court"
+														modelAttribute="court">
+														<form:hidden path="courtId" />
+														<input type="submit" value="Crear">
+													</form:form></th>
+											<tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 
